@@ -11,7 +11,7 @@ def dictionary():
 def main():
 
     global target
-    target = st.text_input("Target", value='', max_chars=9, key=None).lower()
+    target = st.text_input("The middle letter must the 5th letter entered:", value='', max_chars=9, key=None).lower()
 
     for s in target:
         if s not in string.ascii_lowercase:
@@ -70,5 +70,6 @@ def check_word(w):
 
 
 if __name__ == '__main__':
+    st.title('Target Game')
     st.set_page_config(page_title='Target', page_icon='🎯')
     main()
