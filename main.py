@@ -13,24 +13,22 @@ def main():
 
     middle = target[4]
 
-    st.write(middle)
+    with open(word_file) as word_dictionary:
+        word_list = word_dictionary.read().lower().splitlines()
 
-    # with open(word_file) as word_dictionary:
-    #     word_list = word_dictionary.read().lower().splitlines()
+    nine_letter = []
+    words = []
 
-    # nine_letter = []
-    # words = []
+    for word in word_list:
+        if check_word(word):
+            if len(word) == 9:
+                nine_letter.append(word)
+            else:
+                words.append(word)
 
-    # for word in word_list:
-    #     if check_word(word):
-    #         if len(word) == 9:
-    #             nine_letter.append(word)
-    #         else:
-    #             words.append(word)
-
-    # print(words)
-    # print(nine_letter)
-    # print(len(words) + len(nine_letter))
+    st.write(words)
+    st.write(nine_letter)
+    st.write(len(words) + len(nine_letter))
 
 def check_word(w):
     if len(w) < 4:
@@ -50,5 +48,5 @@ def check_word(w):
 
 
 if __name__ == '__main__':
-    st.set_page_config(page_title='Target', page_icon='🏉', layout='centered', initial_sidebar_state='expanded')
+    st.set_page_config(page_title='Target', page_icon='🏉')
     main()
