@@ -41,9 +41,17 @@ def main():
 
         words.sort()
 
-        st.write(f'{len(words) + len(nine_letter)} words: {words}')
+        w_string = ''
+        for w in words:
+            w_string += str(w) + ', '
+
+        nine_string = ''
+        for w in nine_letter:
+            nine_string += str(w) + ', '
+
+        st.write(f'{len(words) + len(nine_letter)} words: {w_string[:-2]}')
         st.write('')
-        st.write(f'9 letter: {nine_letter}')
+        st.write(f'9 letter: {nine_string[:-2].upper()}')
 
 def check_word(w):
     if len(w) < 4:
