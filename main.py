@@ -50,7 +50,6 @@ def main():
             nine_string += str(w) + ', '
 
         st.write(f'{len(words) + len(nine_letter)} words: {w_string[:-2]}')
-        st.write('')
         st.write(f'9 letter: {nine_string[:-2].upper()}')
 
 def check_word(w):
