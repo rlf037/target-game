@@ -70,6 +70,6 @@ def check_word(w):
 
 
 if __name__ == '__main__':
-    st.title('Target Game')
     st.set_page_config(page_title='Target', page_icon='🎯')
+    st.title('Target Game')
     main()
