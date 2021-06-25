@@ -16,10 +16,15 @@ def main():
     for s in target:
         if s not in string.ascii_lowercase:
             st.error(f'{s} is not a valid letter.')
+            return
 
     button = st.button('Find')
 
     if button:
+
+        if len(target) != 9:
+            st.error(f'Only {len(target)} letters entered. Requires exactly 9.')
+            return
 
         global middle
         middle = target[4]
@@ -33,6 +38,8 @@ def main():
                     nine_letter.append(word)
                 else:
                     words.append(word)
+
+        words.sort()
 
         st.write(f'{len(words) + len(nine_letter)} words: {words}')
         st.write('')
