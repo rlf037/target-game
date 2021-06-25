@@ -27,31 +27,24 @@ def main():
 
         global middle
         middle = target[4]
-
-        nine_letter = []
         words = []
-
         word_dict = dictionary()
 
         for word in word_dict:
             if check_word(word):
-                if len(word) == 9:
-                    nine_letter.append(word)
-                else:
-                    words.append(word)
+                words.append(word)
 
         words.sort()
 
-        w_string = ''
-        for w in words:
-            w_string += str(w) + ', '
+        output = ''
+        for word in words:
+            if (len(word)) == 9:
+                x = word.upper()
+            else:
+                x = word.lower()
+            output += str(x) + ', '
 
-        nine_string = ''
-        for w in nine_letter:
-            nine_string += str(w) + ', '
-
-        st.write(f'{len(words) + len(nine_letter)} words: {w_string[:-2]}')
-        st.write(f'9 letter: {nine_string[:-2].upper()}')
+        st.write(f'{len(words)} words: {output[:-2]}')
 
 def check_word(w):
     if len(w) < 4:
