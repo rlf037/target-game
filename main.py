@@ -1,41 +1,42 @@
 import streamlit as st
 
-import os
-import sys
+import string
 
-
-word_file = 'twl06.txt'
-
+@st.cache
+def dictionary():
+    with open('twl06.txt') as word_dictionary:
+            word_list = word_dictionary.read().lower().splitlines()
+    return set(word_list)
 
 def main():
 
     global target
-    target = st.text_input("Target", value='_________', max_chars=9, key=None).lower()
+    target = st.text_input("Target", value='', max_chars=9, key=None).lower()
 
-    global middle
+    for s in target:
+        if s not in string.ascii_lowercase:
+            st.error(f'{s} is not a valid letter.')
 
     button = st.button('Find')
 
     if button:
 
+        global middle
         middle = target[4]
-
-        with open(word_file) as word_dictionary:
-            word_list = word_dictionary.read().lower().splitlines()
 
         nine_letter = []
         words = []
 
-        for word in word_list:
+        for word in dictionary():
             if check_word(word):
                 if len(word) == 9:
                     nine_letter.append(word)
                 else:
                     words.append(word)
 
-        st.write(words)
-        st.write(nine_letter)
-        st.write(len(words) + len(nine_letter))
+        st.write(f'{len(words) + len(nine_letter)} words: {words}')
+        st.write('')
+        st.write(f'9 letter: {nine_letter}')
 
 def check_word(w):
     if len(w) < 4:
@@ -55,5 +56,5 @@ def check_word(w):
 
 
 if __name__ == '__main__':
-    st.set_page_config(page_title='Target', page_icon='🏉')
+    st.set_page_config(page_title='Target', page_icon='🎯')
     main()
