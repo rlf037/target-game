@@ -10,7 +10,7 @@ def dictionary():
 def main():
 
     global target
-    target = st.text_input("The middle letter must the 5th letter entered:", value='', max_chars=9, key=None).lower()
+    target = st.text_input("The middle letter must be the 5th letter entered:", value='', max_chars=9, key=None).lower()
 
     button = st.button('Compute')
 
