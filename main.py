@@ -1,5 +1,4 @@
 import streamlit as st
-
 import string
 
 @st.cache
@@ -13,18 +12,18 @@ def main():
     global target
     target = st.text_input("The middle letter must the 5th letter entered:", value='', max_chars=9, key=None).lower()
 
-    for s in target:
-        if s not in string.ascii_lowercase:
-            st.error(f'{s} is not a valid letter.')
-            return
-
-    button = st.button('Find')
+    button = st.button('Compute')
 
     if button:
 
+        for s in target:
+            if s not in string.ascii_lowercase:
+                st.warning(f"'{s}' is not a valid letter.")
+                st.stop()
+
         if len(target) != 9:
-            st.error(f'Only {len(target)} letters entered. Requires exactly 9.')
-            return
+            st.warning(f'Only {len(target)} letters entered. Requires exactly 9.')
+            st.stop()
 
         global middle
         middle = target[4]
@@ -32,7 +31,9 @@ def main():
         nine_letter = []
         words = []
 
-        for word in dictionary():
+        word_dict = dictionary()
+
+        for word in word_dict:
             if check_word(word):
                 if len(word) == 9:
                     nine_letter.append(word)
