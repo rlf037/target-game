@@ -13,24 +13,29 @@ def main():
     target = st.text_input("Target", value='_________', max_chars=9, key=None)
 
     global middle
-    middle = target[4]
 
-    with open(word_file) as word_dictionary:
-        word_list = word_dictionary.read().lower().splitlines()
+    button = st.button('Find')
 
-    nine_letter = []
-    words = []
+    if button:
 
-    for word in word_list:
-        if check_word(word):
-            if len(word) == 9:
-                nine_letter.append(word)
-            else:
-                words.append(word)
+        middle = target[4]
 
-    st.write(words)
-    st.write(nine_letter)
-    st.write(len(words) + len(nine_letter))
+        with open(word_file) as word_dictionary:
+            word_list = word_dictionary.read().lower().splitlines()
+
+        nine_letter = []
+        words = []
+
+        for word in word_list:
+            if check_word(word):
+                if len(word) == 9:
+                    nine_letter.append(word)
+                else:
+                    words.append(word)
+
+        st.write(words)
+        st.write(nine_letter)
+        st.write(len(words) + len(nine_letter))
 
 def check_word(w):
     if len(w) < 4:
