@@ -9,8 +9,10 @@ word_file = 'twl06.txt'
 
 def main():
 
+    global target
     target = st.text_input("Target", value='_________', max_chars=9, key=None)
 
+    global middle
     middle = target[4]
 
     with open(word_file) as word_dictionary:
