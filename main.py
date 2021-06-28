@@ -4,8 +4,7 @@ import string
 @st.cache
 def dictionary():
     with open('twl06.txt') as word_dictionary:
-            word_list = word_dictionary.read().lower().splitlines()
-    return set(word_list)
+        return set(word_dictionary.read().lower().splitlines())
 
 def main():
 
