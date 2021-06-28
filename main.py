@@ -43,9 +43,10 @@ def main():
             else:
                 x = word.lower()
             output += str(x) + ', '
+        output = output[:-2] + '.'
 
         st.write(f'{len(words)} words found.')
-        st.write(output[:-2])
+        st.write(output)
 
 def check_word(w):
     if len(w) < 4:
